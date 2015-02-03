@@ -41,13 +41,45 @@
 					<h1>Auth for Single Page Applications</h1>
 					<small>Shaun Kaasten<br>shaunk@freshbooks.com</small>
 				</section>
+
+                                <section>
+                                  <h3>Agenda</h3>
+                                  <ul>
+                                    <li>Classical vs Single Page Apps</li>
+                                    <li>Why use SPA</li>
+                                    <li>What does it mean for auth?</li>
+                                    <li>How auth used to work</li>
+
+                                    <li>Protecting Against Attacks</li>
+                                    <li>Code Examples (Ember/Rails)</li>
+                                    <li>Challenges (Session Expiry)</li>
+                                </section>
+                                <section>
+                                  <h3>Classical</h3>
+                                  <ul>
+                                    <li>Full page refresh</li>
+                                    <li>e.g. php, ruby on rails</li>
+                                    <li>request, response</li>
+                                  </ul>
+                                </section>
+
+                                <section>
+                                  <h3>Single Page App</h3>
+                                  <ul>
+                                    <li>All javascript</li>
+                                    <li>xhr to REST endpoint</li>
+                                    <li>assume no hard refresh</li>
+                                  </ul>
+                                </section>
+
 				<section>
-                                  <h3>Standard Auth in a web app</h3>
+                                  <h3>How it used to work</h3>
                                   <ol>
                                     <lI>Login</li>
                                     <li>Store session server side</li>
                                     <li>Put session id in cookie</li>
                                     <li>Use cookie to get session on all requests</li>
+                                    <li>If bad session, just redirect user to login page</li>
                                   </ol>
                                 </section>
                                 <section>
@@ -60,15 +92,22 @@
                                 </section>
 
                                 <section>
-                                  <h3>CSRF - Cross-site request forgery</h3>
-                                  <p>
-                                    User tricked into clicking on a link
-                                  </p>
-		                </section>
-                                <section>
-                                  <h3>Protecting against CSRF</h3>
-                                  <img src="images/head_hurts.jpg"/>
+                                  <h3>What's changed?<h3>
                                 </section>
+
+                                <section>
+                                  <h1>No Page Refresh</h1>
+                                </section>
+
+                                <section>
+                                    <h3>Scenarios</h3>
+                                    <ul>
+                                      <li>Not logged in</li>
+
+                                      <li>Expired Session</li>
+                                    </ul>
+                                </section>
+
                                 <section>
                                   <h3>Single Page App flow</h3>
                                     <ol>
