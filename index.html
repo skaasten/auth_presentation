@@ -14,7 +14,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/theme/blood.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -38,7 +38,7 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Auth for Single Page Applications</h1>
+					<h2>Auth<br>for Single Page Applications</h2>
 					<small>Shaun Kaasten<br>shaunk@freshbooks.com</small>
 				</section>
 
@@ -46,66 +46,86 @@
                                   <h3>Agenda</h3>
                                   <ul>
                                     <li>Classical vs Single Page Apps</li>
-                                    <li>Why use SPA</li>
-                                    <li>What does it mean for auth?</li>
                                     <li>How auth used to work</li>
-
-                                    <li>Protecting Against Attacks</li>
+                                    <li>What's changed?</li>
+                                    <li>How to do it now</li>
                                     <li>Code Examples (Ember/Rails)</li>
-                                    <li>Challenges (Session Expiry)</li>
                                 </section>
                                 <section>
-                                  <h3>Classical</h3>
-                                  <ul>
-                                    <li>Full page refresh</li>
-                                    <li>e.g. php, ruby on rails</li>
-                                    <li>request, response</li>
-                                  </ul>
+                                  <section>
+                                    <h3>Classical Web App</h3>
+                                    <ul>
+                                      <li>Full page refresh</li>
+                                      <li>e.g. php, ruby on rails</li>
+                                      <li>Make request, get response</li>
+                                    </ul>
+                                  </section>
+                                  <section>
+                                    <table>
+                                      <tr>
+                                        <th>Pros</th>
+                                        <th>Cons</th>
+                                      </tr>
+                                      <tr>
+                                        <td>Simplicity</td>
+                                        <td>Feels clunky<br>Network Traffic</td>
+                                      </tr>
+                                    </table>
+                                  </section>
                                 </section>
 
                                 <section>
-                                  <h3>Single Page App</h3>
-                                  <ul>
-                                    <li>All javascript</li>
-                                    <li>xhr to REST endpoint</li>
-                                    <li>assume no hard refresh</li>
-                                  </ul>
+                                  <section>
+                                    <h3>Single Page App</h3>
+                                    <ul>
+                                      <li>All javascript</li>
+                                      <li>xhr to REST endpoint</li>
+                                      <li>assume no hard refresh</li>
+                                    </ul>
+                                  </section>
+                                  <section>
+                                    <table>
+                                      <tr>
+                                        <th>Pros</th>
+                                        <th>Cons</th>
+                                      </tr>
+                                      <tr>
+                                        <td>Responsiveness (UX)</td>
+                                        <td>Complexity</td>
+                                      </tr>
+                                    </table>
+                                  </section>
+                                </section>
                                 </section>
 
 				<section>
                                   <h3>How it used to work</h3>
                                   <ol>
-                                    <lI>Login</li>
-                                    <li>Store session server side</li>
-                                    <li>Put session id in cookie</li>
-                                    <li>Use cookie to get session on all requests</li>
-                                    <li>If bad session, just redirect user to login page</li>
+                                    <li class="fragment">Login</li>
+                                    <li class="fragment">Store session server side</li>
+                                    <li class="fragment">Put session id in cookie</li>
+                                    <li class="fragment">Use cookie to get session on all requests</li>
+                                    <li class="fragment">If bad session, just redirect user to login page</li>
                                   </ol>
                                 </section>
                                 <section>
                                   <h3> Classic login flow</h3>
                                   <img src="images/flow_diagrams/login_flow.png"/>
                                 </section>
+
                                 <section>
                                   <h3> Classic auth flow</h3>
                                   <img src="images/flow_diagrams/classic_auth_flow.png"/>
                                 </section>
 
                                 <section>
-                                  <h3>What's changed?<h3>
-                                </section>
+                                  <section>
+                                    <h3>What's changed?<h3>
+                                  </section>
 
-                                <section>
-                                  <h1>No Page Refresh</h1>
-                                </section>
-
-                                <section>
-                                    <h3>Scenarios</h3>
-                                    <ul>
-                                      <li>Not logged in</li>
-
-                                      <li>Expired Session</li>
-                                    </ul>
+                                  <section>
+                                    <h1>No Page Refresh</h1>
+                                  </section>
                                 </section>
 
                                 <section>
@@ -126,11 +146,12 @@
 
                                 <section>
                                   <h3>Where to store the token</h3>
-                                      <ul>
-                                        <li>Local Storage</li>
-                                        <li>Cookie</li>
-                                      </ul>
+                                  <ul>
+                                    <li>Local Storage (html5 only)</li>
+                                    <li>Cookie</li>
+                                  </ul>
                                 </section>
+
                                 <section>
                                   <h3> SPA auth flow</h3>
                                   <img src="images/flow_diagrams/spa_auth_flow.png"/>
@@ -146,10 +167,6 @@
                                     <ul>
                                       <li>Refresh tokens</li>
                                     </ul>
-                                </section>
-
-				<section>
-                                  <h3>Password Reset Flow
                                 </section>
 
                                 <section>
